@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "RRdfVz+MzYDutq2Dn7Hu+7/6r50YpCAi/OhezCKuX5qPUTCUHmRV1Owv2o6hgZvP+351hHXPRy9wl/PnKqzX+w==",
+  "success": true,
+  "projectFilePath": "/Users/luisdiego/Documents/WCTC/SpringTerm1/NetDatabase/A7MovieLibrary/A7MovieLibrary.csproj",
+  "expectedPackageFiles": [
+    "/Users/luisdiego/.nuget/packages/microsoft.extensions.dependencyinjection/6.0.0-preview.2.21154.6/microsoft.extensions.dependencyinjection.6.0.0-preview.2.21154.6.nupkg.sha512",
+    "/Users/luisdiego/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/6.0.0-preview.2.21154.6/microsoft.extensions.dependencyinjection.abstractions.6.0.0-preview.2.21154.6.nupkg.sha512",
+    "/Users/luisdiego/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
