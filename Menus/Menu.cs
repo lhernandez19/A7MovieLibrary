@@ -2,39 +2,27 @@ using System;
 using System.Collections.Generic;
 using A7MovieLibrary.Data;
 using A7MovieLibrary.Models;
+using System.Linq;
+using ConsoleTables;
 
 namespace A7MovieLibrary.Menus
 {
 public class Menu : IMenu
-
     {
-        public bool ValidMenu { get; set; }
-        private IRepository _movieWriter;
-
-        public Menu(IRepository writer)
+        public Menu(bool validMenu) 
         {
-            ValidMenu = true;
-            _movieWriter = writer;
+            this.ValidMenu = validMenu;
         }
-
-        public void MediaType(){
-            Console.WriteLine("Select media type\n");
-            Console.WriteLine("1. Movie");
-            Console.WriteLine("2. Show -- not available");
-            Console.WriteLine("3. Video -- not available");
-            Console.WriteLine("4. Exit\n");
+        public bool ValidMenu { get; set; }
+        private IContext _movieContext;
+        public Menu(IContext context)
+        {
+            _movieContext = context;
         }
-
-        public void ActionMenu(){
-            Console.WriteLine("Make a selection\n");
-            Console.WriteLine("1. Add new content");
-            Console.WriteLine("2. See content");
-            Console.WriteLine("3. Exit\n");
-        }
+        private List<Movie> _movies;
         public void DisplayMenu()
         {
             int menuSelection;
-
             do{
                 MediaType();
                 menuSelection = Int32.Parse(Console.ReadLine());
@@ -44,10 +32,17 @@ public class Menu : IMenu
                         ActionMenu();
                         menuSelection = Int32.Parse(Console.ReadLine());
                         if(menuSelection.Equals(1)){
-                            Add();
+                            //Add movie
+                            var movie = GetMovie();
+                            _movieContext.AddMovie(movie);
                         } else if(menuSelection.Equals(2)){
-                            PrintList();
-                        } else{System.Console.WriteLine("Invalid option!");}
+                            //Display movies
+                            ConsoleTable.From<Movie>(_movieContext.GetMovies()).Write();
+                            // PrintList();
+                        } else if (menuSelection.Equals(3)){
+                            var movie = Search();
+                            System.Console.WriteLine($"Movie: {movie.Title}");
+                        }
                     }while(!menuSelection.Equals(3));
                     Console.WriteLine("Closing window....");
                     break;
@@ -62,42 +57,40 @@ public class Menu : IMenu
             Console.WriteLine("Closing window....");
         }
 
-        public void Add()
-        {
-            _movieWriter.WriteToFile(GetMovie());
-            Console.WriteLine("The movie has been added");
-        }
-
         public Movie GetMovie()
         {
-            string title;
-            string genre;
-            string option;
-            List<string> genres = new List<string>();
+            Console.WriteLine("Enter the movie title: ");
+            string mTitle = Console.ReadLine();
 
-            Console.WriteLine("Enter the movie title? ");
-            title = Console.ReadLine();
+            System.Console.WriteLine("Enter the movie genre: ");
+            string mGenre = Console.ReadLine();
 
-            do
-            {
-                Console.WriteLine("Add genres: ");
-                genre = Console.ReadLine();
-                genres.Add(genre);
-                Console.WriteLine("Do you want to add a genre: (Y/N)");
-                option = Console.ReadLine().ToUpper();
-            } while (option == "Y");
-
-            return new Movie(_movieWriter.GetNextId(), title, genres);
-            
+            return new Movie { Title = mTitle, Genres = mGenre };
         }
-        public void PrintList()
+
+        public Movie Search(string mTitle)
         {
-            List<Movie> movies = _movieWriter.ReadFromFile();
-            Console.WriteLine($"{"ID", -5} {"Title", -15} {"Genres", -30}");
-            foreach (var m in movies)
-            {
-                Console.WriteLine(m.ToString());
-            }
+            System.Console.WriteLine("enter title: ");
+            mTitle = Console.ReadLine();
+
+            var foundMovies = _movies.FirstOrDefault(m => m.Title.Contains(mTitle));
+            return foundMovies;
+        }
+
+        //Menu option
+        public void MediaType(){
+            Console.WriteLine("Select media type\n");
+            Console.WriteLine("1. Movie");
+            Console.WriteLine("2. Show -- not available");
+            Console.WriteLine("3. Video -- not available");
+            Console.WriteLine("4. Exit\n");
+        }
+
+        public void ActionMenu(){
+            Console.WriteLine("Make a selection\n");
+            Console.WriteLine("1. Add new content");
+            Console.WriteLine("2. See content");
+            Console.WriteLine("3. Search\n");
         }
     }
 }

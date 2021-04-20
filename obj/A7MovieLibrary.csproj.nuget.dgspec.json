@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/luisdiego/Documents/WCTC/SpringTerm1/NetDatabase/A7MovieLibrary/A7MovieLibrary.csproj": {}
+    "/Users/luisdiego/Documents/WCTC/SpringTerm2/NetDabase/A7MovieLibrary/A7MovieLibrary.csproj": {}
   },
   "projects": {
-    "/Users/luisdiego/Documents/WCTC/SpringTerm1/NetDatabase/A7MovieLibrary/A7MovieLibrary.csproj": {
+    "/Users/luisdiego/Documents/WCTC/SpringTerm2/NetDabase/A7MovieLibrary/A7MovieLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/luisdiego/Documents/WCTC/SpringTerm1/NetDatabase/A7MovieLibrary/A7MovieLibrary.csproj",
+        "projectUniqueName": "/Users/luisdiego/Documents/WCTC/SpringTerm2/NetDabase/A7MovieLibrary/A7MovieLibrary.csproj",
         "projectName": "A7MovieLibrary",
-        "projectPath": "/Users/luisdiego/Documents/WCTC/SpringTerm1/NetDatabase/A7MovieLibrary/A7MovieLibrary.csproj",
+        "projectPath": "/Users/luisdiego/Documents/WCTC/SpringTerm2/NetDabase/A7MovieLibrary/A7MovieLibrary.csproj",
         "packagesPath": "/Users/luisdiego/.nuget/packages/",
-        "outputPath": "/Users/luisdiego/Documents/WCTC/SpringTerm1/NetDatabase/A7MovieLibrary/obj/",
+        "outputPath": "/Users/luisdiego/Documents/WCTC/SpringTerm2/NetDabase/A7MovieLibrary/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/luisdiego/.nuget/NuGet/NuGet.Config"
@@ -38,6 +38,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "ConsoleTables": {
+              "target": "Package",
+              "version": "[2.4.2, )"
+            },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
               "version": "[6.0.0-preview.2.21154.6, )"

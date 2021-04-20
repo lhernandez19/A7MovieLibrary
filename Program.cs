@@ -11,7 +11,7 @@ namespace A7MovieLibrary
         static void Main(string[] args)
         {
             var serviceProvider = new ServiceCollection()
-                .AddSingleton<IRepository, MovieWriter>()
+                .AddSingleton<IRepository, MovieRepository>()
                 .AddSingleton<IMenu, Menu>()
                 .BuildServiceProvider();
 

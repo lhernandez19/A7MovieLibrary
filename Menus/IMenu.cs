@@ -7,9 +7,7 @@ public interface IMenu
     {
         bool ValidMenu { get; set; }
         void DisplayMenu();
-        void Add();
         Movie GetMovie();
-        void PrintList();
         void MediaType();
         void ActionMenu();
 

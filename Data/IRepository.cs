@@ -5,8 +5,8 @@ namespace A7MovieLibrary.Data
 {
     public interface IRepository
     {
-        void WriteToFile(Movie movie);
-        List<Movie> ReadFromFile();
-        int GetNextId();
+        void Add(Movie movie);
+        List<Movie> GetAll();
+        Movie Search(string title);
     }
 }
