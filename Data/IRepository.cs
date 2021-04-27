@@ -7,6 +7,6 @@ namespace A7MovieLibrary.Data
     {
         void Add(Movie movie);
         List<Movie> GetAll();
-        Movie Search(string title);
+        List<Movie> Search(string title);
     }
 }

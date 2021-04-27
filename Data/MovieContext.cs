@@ -18,7 +18,7 @@ namespace A7MovieLibrary.Data
         {
             return _repository.GetAll();
         }
-        public Movie SearchMovies(string title)
+        public List<Movie> SearchMovies(string title)
         {
             return _repository.Search(title);        
         }

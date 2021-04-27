@@ -36,3 +36,4 @@
 /Users/luisdiego/Documents/WCTC/SpringTerm2/NetDabase/A7MovieLibrary/obj/Debug/net5.0/ref/A7MovieLibrary.dll
 /Users/luisdiego/Documents/WCTC/SpringTerm2/NetDabase/A7MovieLibrary/obj/Debug/net5.0/A7MovieLibrary.pdb
 /Users/luisdiego/Documents/WCTC/SpringTerm2/NetDabase/A7MovieLibrary/obj/Debug/net5.0/A7MovieLibrary.genruntimeconfig.cache
+/Users/luisdiego/Documents/WCTC/SpringTerm2/NetDabase/A7MovieLibrary/bin/Debug/net5.0/ConsoleTables.dll

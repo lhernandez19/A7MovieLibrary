@@ -1,11 +1,11 @@
 using System.Collections.Generic;
+using A4MovieLibrary;
 using Newtonsoft.Json;
 
 namespace A7MovieLibrary.Models
 {
   [JsonObject(MemberSerialization.OptIn)]
-    public class Movie
-
+    public class Movie : Media
     {
         [JsonProperty]
         public int MovieId { get; set; }

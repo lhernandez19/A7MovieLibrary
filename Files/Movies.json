@@ -1,27 +1,37 @@
 [
-	{
-		"MovieID": 1,
-		"Title": "Avengers",
-		"Genres": ["Action", "Adventure"]
-	},
-	{
-		"MovieID": 2,
-		"Title": "Avenger 2",
-		"Genres": ["Action", "Adventure"]
-	},
-	{
-		"MovieID": 3,
-		"Title": "Avenger 3",
-		"Genres": ["Action", "Adventure"]
-	},
-	{
-		"MovieID": 4,
-		"Title": "www",
-		"Genres": ["www", "s"]
-	},
-	{
-		"MovieID": 5,
-		"Title": "sss",
-		"Genres": ["sssss", "ddddd"]
-	}
+  {
+    "MovieId": 1,
+    "Title": "avengers",
+    "Genres": "adventure"
+  },
+  {
+    "MovieId": 2,
+    "Title": "avengers 2",
+    "Genres": "adventure"
+  },
+  {
+    "MovieId": 3,
+    "Title": "avengers 3",
+    "Genres": "adventure"
+  },
+  {
+    "MovieId": 4,
+    "Title": "avengers 4",
+    "Genres": "adventure"
+  },
+  {
+    "MovieId": 5,
+    "Title": "avengers 5",
+    "Genres": "adventure"
+  },
+  {
+    "MovieId": 6,
+    "Title": "avengers 6",
+    "Genres": "adventure"
+  },
+  {
+    "MovieId": 7,
+    "Title": "new movie",
+    "Genres": "new genre"
+  }
 ]

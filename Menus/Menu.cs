@@ -4,6 +4,7 @@ using A7MovieLibrary.Data;
 using A7MovieLibrary.Models;
 using System.Linq;
 using ConsoleTables;
+using System.Globalization;
 
 namespace A7MovieLibrary.Menus
 {
@@ -15,71 +16,75 @@ public class Menu : IMenu
         }
         public bool ValidMenu { get; set; }
         private IContext _movieContext;
+        public Menu(){}
         public Menu(IContext context)
         {
             _movieContext = context;
+            DisplayMenu();
         }
-        private List<Movie> _movies;
         public void DisplayMenu()
         {
-            int menuSelection;
+            string menuSelection;
             do{
                 MediaType();
-                menuSelection = Int32.Parse(Console.ReadLine());
+                menuSelection = Console.ReadLine();
                 switch(menuSelection){
-                    case 1:
+                    case "1":
                     do{
                         ActionMenu();
-                        menuSelection = Int32.Parse(Console.ReadLine());
-                        if(menuSelection.Equals(1)){
+                        menuSelection = Console.ReadLine();
+                        if(menuSelection == "1"){
                             //Add movie
                             var movie = GetMovie();
                             _movieContext.AddMovie(movie);
-                        } else if(menuSelection.Equals(2)){
+                        } else if(menuSelection == "2"){
                             //Display movies
                             ConsoleTable.From<Movie>(_movieContext.GetMovies()).Write();
-                            // PrintList();
-                        } else if (menuSelection.Equals(3)){
+                        } else if (menuSelection == "3"){
+                            //Search movies
                             var movie = Search();
-                            System.Console.WriteLine($"Movie: {movie.Title}");
+                            System.Console.WriteLine();
+                            movie.ForEach(x=> System.Console.WriteLine($"Movie: {x.Title}"));
+                        } else{
+                            System.Console.WriteLine("Invalid selection.");
                         }
-                    }while(!menuSelection.Equals(3));
-                    Console.WriteLine("Closing window....");
+                    }while(menuSelection != "4");
+                    Console.WriteLine("\nClosing window....\n");
                     break;
-                    case 2: 
+                    case "2": 
                     System.Console.WriteLine("Implementation not required for this assignment");
                     break;
-                    case 3: 
+                    case "3": 
                     System.Console.WriteLine("Implementation not required for this assignment");
                     break;
                 }
-            }while(!menuSelection.Equals(4));
-            Console.WriteLine("Closing window....");
+            }while(menuSelection != "4");
+            Console.WriteLine("\nClosing window....\n");
         }
 
         public Movie GetMovie()
         {
-            Console.WriteLine("Enter the movie title: ");
-            string mTitle = Console.ReadLine();
+            Console.Write("\nEnter the movie title: ");
+            string mTitle = Console.ReadLine().ToLower();
 
-            System.Console.WriteLine("Enter the movie genre: ");
-            string mGenre = Console.ReadLine();
+            System.Console.Write("\nEnter the movie genre: ");
+            string mGenre = Console.ReadLine().ToLower();
 
             return new Movie { Title = mTitle, Genres = mGenre };
         }
 
-        public Movie Search(string mTitle)
+        public List<Movie> Search()
         {
-            System.Console.WriteLine("enter title: ");
-            mTitle = Console.ReadLine();
+            System.Console.Write("\nEnter title: ");
+            var mTitle = Console.ReadLine().ToLower();
 
-            var foundMovies = _movies.FirstOrDefault(m => m.Title.Contains(mTitle));
+            var foundMovies = _movieContext.SearchMovies(mTitle);
             return foundMovies;
         }
 
         //Menu option
         public void MediaType(){
-            Console.WriteLine("Select media type\n");
+            Console.WriteLine("\nSelect media type\n");
             Console.WriteLine("1. Movie");
             Console.WriteLine("2. Show -- not available");
             Console.WriteLine("3. Video -- not available");
@@ -87,10 +92,11 @@ public class Menu : IMenu
         }
 
         public void ActionMenu(){
-            Console.WriteLine("Make a selection\n");
+            Console.WriteLine("\nMake a selection\n");
             Console.WriteLine("1. Add new content");
             Console.WriteLine("2. See content");
-            Console.WriteLine("3. Search\n");
+            Console.WriteLine("3. Search");
+            Console.WriteLine("4. Exit\n");
         }
     }
 }
